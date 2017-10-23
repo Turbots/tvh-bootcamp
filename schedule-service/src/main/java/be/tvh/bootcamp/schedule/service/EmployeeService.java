@@ -37,6 +37,7 @@ public class EmployeeService {
 			.map(employeeConverter::convert);
 	}
 
+	@Transactional
 	public Page<EmployeeDto> findAllEmployeesByDepartment(String department, Pageable pageable) {
 		return this.employeeRepository
 			.findAllByDepartment(department, pageable)

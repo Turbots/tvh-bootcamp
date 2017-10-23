@@ -3,6 +3,9 @@ spring:
     show-sql: true
   application:
     name: schedule-service
+  cache:
+    cache-names:
+    - courses-per-department
   cloud:
     config:
       uri: http://localhost:8085

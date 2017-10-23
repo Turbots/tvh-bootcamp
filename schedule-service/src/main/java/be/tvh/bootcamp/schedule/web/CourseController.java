@@ -48,9 +48,17 @@ public class CourseController {
 	}
 
 	@GetMapping(value = "/department/today")
-	public List<CourseDto> findAllCoursesForTodayWhereTeacherInDepartment(@RequestParam(value = "department", required = false) Optional<String> department) {
+	public List<CourseDto> findAllCoursesForTodayWhereTeacherInDepartment(
+		@RequestParam(value = "department", required = false) Optional<String> department) {
 		log.info("Searching for all courses for [{" + department + "}]");
 
 		return this.courseService.findCoursesFor(LocalDate.now(), department);
+	}
+
+	@GetMapping(value = "/resetCache")
+	public ResponseEntity resetCache() {
+		this.courseService.resetCache();
+
+		return ResponseEntity.ok().build();
 	}
 }
